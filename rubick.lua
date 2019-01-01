@@ -1,6 +1,6 @@
 local rubick = {}
 rubick.lastspell = {}
-rubick.spellkey = Menu.AddKeyOption({".SCRIPTS", "Rubick"}, "Rubick ComboKey", Enum.ButtonCode.KEY_SPACE)
+rubick.spellkey = Menu.AddKeyOption({".SCRIPTS", "Rubick"}, "Rubick Spell Key", Enum.ButtonCode.KEY_SPACE)
 rubick.swapkey = Menu.AddKeyOption({".SCRIPTS", "Rubick"}, "Rubick Swap Key", Enum.ButtonCode.KEY_X)
 
 function rubick.OnUpdate()
@@ -10,7 +10,11 @@ function rubick.OnUpdate()
     local fadebolt = NPC.GetAbilityByIndex(self,1)
     local spell = NPC.GetAbilityByIndex(self,3)
     local spellsteal = NPC.GetAbilityByIndex(self,5)
-    if NPC.GetItem(self, "item_ultimate_scepter") then range = 1400 else range = 1000 end
+    if NPC.GetAbility(self, "special_bonus_cast_range_125") and Ability.GetLevel(NPC.GetAbility(self, "special_bonus_cast_range_125")) > 0 then
+        range = Ability.GetCastRange(spellsteal) + 125
+    else
+        range = Ability.GetCastRange(spellsteal)
+    end
     for enemyindex = 1, Heroes.Count() do
         local enemy = Heroes.Get(enemyindex)
         if enemy and not Entity.IsSameTeam(self, enemy) then
@@ -20,7 +24,8 @@ function rubick.OnUpdate()
                 if enemyspell and Ability.GetCooldown(enemyspell) > 0 then
                     rubick.lastspell[name] = Ability.GetName(enemyspell)
                 end
-                if spellsteal and Ability.IsReady(spellsteal) and NPC.IsEntityInRange(self, enemy, Ability.GetCastRange(spellsteal)) then
+                if spellsteal and Ability.IsReady(spellsteal) and NPC.IsEntityInRange(self, enemy, range) then
+                    Log.Write(Ability.GetCastRange(spellsteal))
                     if enemyspell and Ability.IsInAbilityPhase(enemyspell) and spell and Ability.GetCooldown(spell) > 0 or NPC.GetAbility(self, "rubick_empty1") or Menu.IsKeyDown(rubick.swapkey) then
                         if rubick.lastspell[name] ~= nil and spell and Ability.GetName(spell) ~= rubick.lastspell[name] then
                             Ability.CastTarget(spellsteal, enemy)

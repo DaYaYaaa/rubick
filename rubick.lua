@@ -17,15 +17,15 @@ function rubick.OnUpdate()
     end
     for enemyindex = 1, Heroes.Count() do
         local enemy = Heroes.Get(enemyindex)
-        if enemy and not Entity.IsSameTeam(self, enemy) then
+        if enemy and not Entity.IsSameTeam(self, enemy) and not NPC.IsChannellingAbility(self) then
             local name = NPC.GetUnitName(enemy)
-            for index = 0, 24 do
-                local enemyspell = NPC.GetAbilityByIndex(enemy, index)
+            for abilityindex = 0, 24 do
+                local enemyspell = NPC.GetAbilityByIndex(enemy, abilityindex)
                 if enemyspell and Ability.GetCooldown(enemyspell) > 0 then
                     rubick.lastspell[name] = Ability.GetName(enemyspell)
                 end
                 if spellsteal and Ability.IsReady(spellsteal) and NPC.IsEntityInRange(self, enemy, range) then
-                    if enemyspell and Ability.IsInAbilityPhase(enemyspell) and spell and Ability.GetCooldown(spell) > 0 or NPC.GetAbility(self, "rubick_empty1") or Menu.IsKeyDown(rubick.swapkey) then
+                    if enemyspell and Ability.GetCooldown(enemyspell) > 0 and spell and Ability.GetCooldown(spell) > 0 or NPC.GetAbility(self, "rubick_empty1") or Menu.IsKeyDown(rubick.swapkey) then
                         if rubick.lastspell[name] ~= nil and spell and Ability.GetName(spell) ~= rubick.lastspell[name] then
                             Ability.CastTarget(spellsteal, enemy)
                         end
@@ -35,8 +35,8 @@ function rubick.OnUpdate()
         end
     end
     local enemy = Input.GetNearestHeroToCursor(Entity.GetTeamNum(self), Enum.TeamType.TEAM_ENEMY)
-    if enemy and Menu.IsKeyDown(rubick.spellkey) then
-        if spell and Ability.IsReady(spell) and not NPC.IsChannellingAbility(self) then
+    if enemy and Menu.IsKeyDown(rubick.spellkey) and not NPC.IsChannellingAbility(self) then
+        if spell and Ability.IsReady(spell) then
             if (Ability.GetBehavior(spell) & Enum.AbilityBehavior.DOTA_ABILITY_BEHAVIOR_NO_TARGET) ~= 0 then
                 if Ability.GetName(spell) == "earthshaker_enchant_totem" and NPC.GetItem(self, "item_ultimate_scepter") then
                     Ability.CastPosition(spell, Entity.GetAbsOrigin(enemy))

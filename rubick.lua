@@ -25,7 +25,6 @@ function rubick.OnUpdate()
                     rubick.lastspell[name] = Ability.GetName(enemyspell)
                 end
                 if spellsteal and Ability.IsReady(spellsteal) and NPC.IsEntityInRange(self, enemy, range) then
-                    Log.Write(Ability.GetCastRange(spellsteal))
                     if enemyspell and Ability.IsInAbilityPhase(enemyspell) and spell and Ability.GetCooldown(spell) > 0 or NPC.GetAbility(self, "rubick_empty1") or Menu.IsKeyDown(rubick.swapkey) then
                         if rubick.lastspell[name] ~= nil and spell and Ability.GetName(spell) ~= rubick.lastspell[name] then
                             Ability.CastTarget(spellsteal, enemy)

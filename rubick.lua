@@ -3,11 +3,25 @@ rubick.lastspell = {}
 rubick.spellkey = Menu.AddKeyOption({".SCRIPTS", "Rubick"}, "Rubick Spell Key", Enum.ButtonCode.KEY_SPACE)
 rubick.swapkey = Menu.AddKeyOption({".SCRIPTS", "Rubick"}, "Rubick Swap Key", Enum.ButtonCode.KEY_X)
 rubick.logical = {
+    {name = "alchemist_chemical_rage", disjoint = yes},
+    {name = "centaur_hoof_stomp", radius = 315},
     {name = "crystal_maiden_freezing_field", radius = 835},
+    {name = "clinkz_strafe", radius = 550, disjoint = yes},
+    {name = "dark_willow_shadow_realm", radius = 600, disjoint = yes},
+    {name = "earthshaker_enchant_totem", radius = 300},
     {name = "earthshaker_echo_slam", radius = 600},
     {name = "enigma_black_hole", radius = 420},
     {name = "faceless_void_chronosphere", radius = 425},
-    {name = "tidehunter_ravage", radius = 1250}
+    {name = "magnataur_reverse_polarity", radius = 410},
+    {name = "puck_waning_rift", disjoint = yes},
+    {name = "slardar_slithereen_crush", radius = 350},
+    {name = "storm_spirit_static_remnant", radius = 275},
+    {name = "terrorblade_reflection", radius = 900},
+    {name = "invoker_sun_strike", radius = 99999},
+    {name = "tinker_heat_seeking_missile", radius = 2500},
+    {name = "tidehunter_ravage", radius = 1250},
+    {name = "terrorblade_reflection", radius = 900},
+    {name = "zuus_thundergods_wrath", radius = 99999}
 }
 
 function rubick.OnUpdate()
@@ -42,23 +56,38 @@ function rubick.OnUpdate()
         end
     end
     local enemy = Input.GetNearestHeroToCursor(Entity.GetTeamNum(self), Enum.TeamType.TEAM_ENEMY)
+    if spell and (Ability.GetBehavior(spell) & Enum.AbilityBehavior.DOTA_ABILITY_BEHAVIOR_CHANNELLED) ~= 0 and Ability.IsReady(spell) then
+        ischannelling = true
+    else
+        ischannelling = false
+    end
     if enemy and Menu.IsKeyDown(rubick.spellkey) and not NPC.IsChannellingAbility(self) then
         if spell and Ability.IsReady(spell) then
-            for _, logicspell in pairs(rubick.logical) do
-                if logicspell and spell and Ability.GetName(spell) == logicspell.name then
-                    islogicspell = true
-                    spellradius = logicspell.radius
-                    if (Ability.GetBehavior(spell) & Enum.AbilityBehavior.DOTA_ABILITY_BEHAVIOR_CHANNELLED) ~= 0 then
-                        ischannelling = true
-                    else
-                        ischannelling = false
+            local logicalrange = Ability.GetCastRange(spell)
+            if logicalrange == 0 then
+                for _, logicalspell in pairs(rubick.logical) do
+                    if logicalspell then
+                        if Ability.GetName(spell) == logicalspell.name then
+                            logicalrange = logicalspell.radius
+                        end
+                        if logicalspell.disjoint == yes then
+                            --Log.Write("isDisjoint")
+                        end
                     end
                 end
             end
-            if not islogicspell or islogicspell and NPC.IsEntityInRange(self, enemy, spellradius - 60) then
+            if Ability.GetName(spell) == "riki_tricks_of_the_trade" then
+                logicalrange = 450
+            end
+            if Ability.GetName(spell) == "pugna_nether_ward" then
+                logicalrange = 1600
+            end
+            if NPC.IsEntityInRange(self, enemy, logicalrange - 75) then
                 if (Ability.GetBehavior(spell) & Enum.AbilityBehavior.DOTA_ABILITY_BEHAVIOR_NO_TARGET) ~= 0 then
                     if Ability.GetName(spell) == "earthshaker_enchant_totem" and NPC.GetItem(self, "item_ultimate_scepter") then
                         Ability.CastPosition(spell, Entity.GetAbsOrigin(enemy))
+                    elseif Ability.GetName(spell) == "riki_tricks_of_the_trade" and NPC.GetItem(self, "item_ultimate_scepter") then
+                        Ability.CastTarget(spell, self)
                     else
                         Ability.CastNoTarget(spell)
                     end
@@ -74,33 +103,39 @@ function rubick.OnUpdate()
                     end
                 end
                 if (Ability.GetBehavior(spell) & Enum.AbilityBehavior.DOTA_ABILITY_BEHAVIOR_POINT) ~= 0 then
-                    if NPC.IsRunning(enemy) then
-                        local speed = NPC.GetMoveSpeed(enemy)
-                        local angle = Entity.GetRotation(enemy)
-                        local offset = Angle(0, 45, 0)
-                        angle:SetYaw(angle:GetYaw() + offset:GetYaw())
-                        local x,y,z = angle:GetVectors()
-                        local direction = x + y + z
-                        
-                        direction:SetZ(0)
-                        direction:Normalize()
-                        if Ability.GetName(spell) == "invoker_sun_strike" then
-                            direction:Scale(speed * 2)
-                        else
-                            direction:Scale(speed)
-                        end
-                        local origin = NPC.GetAbsOrigin(enemy)
-                        local pos = origin + direction
-                        Ability.CastPosition(spell, pos)
+                    if Ability.GetName(spell) == "pugna_nether_ward" then
+                        Ability.CastPosition(spell, Entity.GetAbsOrigin(self))
                     else
-                        Ability.CastPosition(spell, Entity.GetAbsOrigin(enemy))
+                        if NPC.IsRunning(enemy) then
+                            local speed = NPC.GetMoveSpeed(enemy)
+                            local angle = Entity.GetRotation(enemy)
+                            local offset = Angle(0, 45, 0)
+                            angle:SetYaw(angle:GetYaw() + offset:GetYaw())
+                            local x,y,z = angle:GetVectors()
+                            local direction = x + y + z
+                            
+                            direction:SetZ(0)
+                            direction:Normalize()
+                            if Ability.GetName(spell) == "invoker_sun_strike" then
+                                direction:Scale(speed * 2)
+                            else
+                                direction:Scale(speed)
+                            end
+                            local origin = NPC.GetAbsOrigin(enemy)
+                            local pos = origin + direction
+                            Ability.CastPosition(spell, pos)
+                        else
+                            Ability.CastPosition(spell, Entity.GetAbsOrigin(enemy))
+                        end
                     end
                 end
             end
         end
         if not spell or spell and not ischannelling then
-            if telekinesis and Ability.IsReady(telekinesis) then
-                Ability.CastTarget(telekinesis, enemy)
+            if not NPC.IsStunned(enemy) or not NPC.HasState(enemy, Enum.ModifierState.MODIFIER_STATE_HEXED) then
+                if telekinesis and Ability.IsReady(telekinesis) then
+                    Ability.CastTarget(telekinesis, enemy)
+                end
             end
             if fadebolt and Ability.IsReady(fadebolt) then
                 Ability.CastTarget(fadebolt, enemy)

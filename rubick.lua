@@ -70,7 +70,7 @@ function rubick.OnUpdate()
                 for _, logicalspell in pairs(rubick.logical) do
                     if logicalspell then
                         if Ability.GetName(spell) == logicalspell.name then
-                            logicalrange = logicalspell.radius
+                            logicalrange = logicalspell.radius - 75
                         end
                         if logicalspell.disjoint == yes then
                             --Log.Write("isDisjoint")
@@ -85,9 +85,9 @@ function rubick.OnUpdate()
                 logicalrange = 1600
             end
             if Ability.GetName(spell) == "nevermore_shadowraze1" or Ability.GetName(spell) == "nevermore_shadowraze2" or Ability.GetName(spell) == "nevermore_shadowraze3" then
-                logicalrange = logicalrange + 175
+                logicalrange = logicalrange + 100
             end
-            if Entity.GetAbsOrigin(self):Distance(Entity.GetAbsOrigin(enemy)):Length2D() < logicalrange - 75 then
+            if Entity.GetAbsOrigin(self):Distance(Entity.GetAbsOrigin(enemy)):Length2D() < logicalrange then
                 if (Ability.GetBehavior(spell) & Enum.AbilityBehavior.DOTA_ABILITY_BEHAVIOR_NO_TARGET) ~= 0 then
                     if Ability.GetName(spell) == "earthshaker_enchant_totem" and NPC.GetItem(self, "item_ultimate_scepter") then
                         Ability.CastPosition(spell, Entity.GetAbsOrigin(enemy))
@@ -122,27 +122,43 @@ function rubick.OnUpdate()
                     if Ability.GetName(spell) == "pugna_nether_ward" then
                         Ability.CastPosition(spell, Entity.GetAbsOrigin(self))
                     else
-                        if NPC.IsRunning(enemy) then
-                            local speed = NPC.GetMoveSpeed(enemy)
-                            local angle = Entity.GetRotation(enemy)
-                            local offset = Angle(0, 45, 0)
-                            angle:SetYaw(angle:GetYaw() + offset:GetYaw())
-                            local x,y,z = angle:GetVectors()
-                            local direction = x + y + z
-                            direction:SetZ(0)
-                            direction:Normalize()
-                            if Ability.GetName(spell) == "invoker_sun_strike" then
-                                direction:Scale(speed * 2)
-                            elseif Ability.GetName(spell) == "ancient_apparition_ice_blast" then
-                                direction:Scale(speed * 2)
-                            else
-                                direction:Scale(speed)
+                        if Ability.GetName(spell) == "pudge_meat_hook" then
+                            for i = 1, math.floor((Entity.GetAbsOrigin(self) - Entity.GetAbsOrigin(enemy)):Length2D() / 125) do
+                                local isblocked = false
+                                for _, unit in ipairs(NPCs.InRadius(Entity.GetAbsOrigin(self) + (Entity.GetAbsOrigin(enemy) - Entity.GetAbsOrigin(self)):Normalized():Scaled(i * 125), 125, Entity.GetTeamNum(self), Enum.TeamType.TEAM_BOTH)) do
+                                    if unit and Entity.IsNPC(unit) and unit ~= enemy and unit ~= self and Entity.IsAlive(unit) and not Entity.IsDormant(unit) and not NPC.IsStructure(unit) and not NPC.IsBarracks(unit) and not NPC.IsWaitingToSpawn(unit) and NPC.GetUnitName(unit) ~= "npc_dota_neutral_caster" and NPC.GetUnitName(unit) ~= nil then
+                                        isblocked = true
+                                        break
+                                    end
+                                end
+                                if isblocked then
+                                    return false
+                                end	
                             end
-                            local origin = NPC.GetAbsOrigin(enemy)
-                            local pos = origin + direction
-                            Ability.CastPosition(spell, pos)
-                        else
-                            Ability.CastPosition(spell, Entity.GetAbsOrigin(enemy))
+                        end
+                        if not isblocked and Ability.GetName(spell) == "pudge_meat_hook" and NPC.FindFacingNPC(self, nil, Enum.TeamType.TEAM_ENEMY, nil, 15) == enemy or Ability.GetName(spell) ~= "pudge_meat_hook" then
+                            if NPC.IsRunning(enemy) then
+                                local speed = NPC.GetMoveSpeed(enemy)
+                                local angle = Entity.GetRotation(enemy)
+                                local offset = Angle(0, 45, 0)
+                                angle:SetYaw(angle:GetYaw() + offset:GetYaw())
+                                local x,y,z = angle:GetVectors()
+                                local direction = x + y + z
+                                direction:SetZ(0)
+                                direction:Normalize()
+                                if Ability.GetName(spell) == "invoker_sun_strike" then
+                                    direction:Scale(speed * 2)
+                                elseif Ability.GetName(spell) == "ancient_apparition_ice_blast" then
+                                    direction:Scale(speed * 2)
+                                else
+                                    direction:Scale(speed)
+                                end
+                                local origin = NPC.GetAbsOrigin(enemy)
+                                local pos = origin + direction
+                                Ability.CastPosition(spell, pos)
+                            else
+                                Ability.CastPosition(spell, Entity.GetAbsOrigin(enemy))
+                            end
                         end
                         if not isflying and Ability.GetName(spell) == "ancient_apparition_ice_blast" and Ability.IsInAbilityPhase(spell) then
                             isflying = true

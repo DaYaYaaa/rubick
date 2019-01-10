@@ -3,6 +3,8 @@ rubick.lastspell = {}
 rubick.spellkey = Menu.AddKeyOption({".SCRIPTS", "Rubick"}, "Rubick Spell Key", Enum.ButtonCode.KEY_SPACE)
 rubick.swapkey = Menu.AddKeyOption({".SCRIPTS", "Rubick"}, "Rubick Swap Key", Enum.ButtonCode.KEY_X)
 rubick.logical = {
+    {name = "ancient_apparition_ice_blast", radius = 99999},
+    {name = "ancient_apparition_ice_blast_release", radius = 99999},
     {name = "alchemist_chemical_rage", disjoint = yes},
     {name = "centaur_hoof_stomp", radius = 315},
     {name = "crystal_maiden_freezing_field", radius = 835},
@@ -97,6 +99,11 @@ function rubick.OnUpdate()
                         if NPC.FindFacingNPC(self, nil, Enum.TeamType.TEAM_ENEMY, logicalrange, 5) == enemy  then
                             Ability.CastNoTarget(spell)
                         end
+                    elseif Ability.GetName(spell) == "ancient_apparition_ice_blast_release" then
+                        if isflying and GameRules.GetGameTime() - timer > traveltime then
+                            isflying = false
+                            Ability.CastNoTarget(spell)
+                        end
                     else
                         Ability.CastNoTarget(spell)
                     end
@@ -126,6 +133,8 @@ function rubick.OnUpdate()
                             direction:Normalize()
                             if Ability.GetName(spell) == "invoker_sun_strike" then
                                 direction:Scale(speed * 2)
+                            elseif Ability.GetName(spell) == "ancient_apparition_ice_blast" then
+                                direction:Scale(speed * 2)
                             else
                                 direction:Scale(speed)
                             end
@@ -134,6 +143,11 @@ function rubick.OnUpdate()
                             Ability.CastPosition(spell, pos)
                         else
                             Ability.CastPosition(spell, Entity.GetAbsOrigin(enemy))
+                        end
+                        if not isflying and Ability.GetName(spell) == "ancient_apparition_ice_blast" and Ability.IsInAbilityPhase(spell) then
+                            isflying = true
+                            timer = GameRules.GetGameTime()
+                            traveltime = Entity.GetAbsOrigin(self):Distance(Entity.GetAbsOrigin(enemy)):Length2D() / 1500
                         end
                     end
                 end

@@ -56,12 +56,12 @@ function rubick.OnUpdate()
         end
     end
     local enemy = Input.GetNearestHeroToCursor(Entity.GetTeamNum(self), Enum.TeamType.TEAM_ENEMY)
-    if spell and (Ability.GetBehavior(spell) & Enum.AbilityBehavior.DOTA_ABILITY_BEHAVIOR_CHANNELLED) ~= 0 and Ability.IsReady(spell) then
+    if spell and (Ability.GetBehavior(spell) & Enum.AbilityBehavior.DOTA_ABILITY_BEHAVIOR_CHANNELLED) ~= 0 and Ability.IsReady(spell) or NPC.IsChannellingAbility(self) then
         ischannelling = true
     else
         ischannelling = false
     end
-    if enemy and Menu.IsKeyDown(rubick.spellkey) and not NPC.IsChannellingAbility(self) then
+    if enemy and Menu.IsKeyDown(rubick.spellkey) then
         if spell and Ability.IsReady(spell) then
             local logicalrange = Ability.GetCastRange(spell)
             if logicalrange == 0 then
@@ -82,12 +82,21 @@ function rubick.OnUpdate()
             if Ability.GetName(spell) == "pugna_nether_ward" then
                 logicalrange = 1600
             end
-            if NPC.IsEntityInRange(self, enemy, logicalrange - 75) then
+            if Ability.GetName(spell) == "nevermore_shadowraze1" or Ability.GetName(spell) == "nevermore_shadowraze2" or Ability.GetName(spell) == "nevermore_shadowraze3" then
+                logicalrange = logicalrange + 175
+            end
+            if Entity.GetAbsOrigin(self):Distance(Entity.GetAbsOrigin(enemy)):Length2D() < logicalrange - 75 then
                 if (Ability.GetBehavior(spell) & Enum.AbilityBehavior.DOTA_ABILITY_BEHAVIOR_NO_TARGET) ~= 0 then
                     if Ability.GetName(spell) == "earthshaker_enchant_totem" and NPC.GetItem(self, "item_ultimate_scepter") then
                         Ability.CastPosition(spell, Entity.GetAbsOrigin(enemy))
                     elseif Ability.GetName(spell) == "riki_tricks_of_the_trade" and NPC.GetItem(self, "item_ultimate_scepter") then
                         Ability.CastTarget(spell, self)
+                    elseif Ability.GetName(spell) == "nevermore_shadowraze1" 
+                    or Ability.GetName(spell) == "nevermore_shadowraze2" and Entity.GetAbsOrigin(self):Distance(Entity.GetAbsOrigin(enemy)):Length2D() > 325
+                    or Ability.GetName(spell) == "nevermore_shadowraze3" and Entity.GetAbsOrigin(self):Distance(Entity.GetAbsOrigin(enemy)):Length2D() > 575 then
+                        if NPC.FindFacingNPC(self, nil, Enum.TeamType.TEAM_ENEMY, logicalrange, 5) == enemy  then
+                            Ability.CastNoTarget(spell)
+                        end
                     else
                         Ability.CastNoTarget(spell)
                     end
@@ -113,7 +122,6 @@ function rubick.OnUpdate()
                             angle:SetYaw(angle:GetYaw() + offset:GetYaw())
                             local x,y,z = angle:GetVectors()
                             local direction = x + y + z
-                            
                             direction:SetZ(0)
                             direction:Normalize()
                             if Ability.GetName(spell) == "invoker_sun_strike" then

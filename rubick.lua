@@ -5,92 +5,92 @@ rubick.swapkey = Menu.AddKeyOption({".SCRIPTS", "Rubick"}, "Rubick Swap Key", En
 rubick.logical = {
     {name = "ancient_apparition_ice_blast", radius = 99999},
     {name = "ancient_apparition_ice_blast_release", radius = 99999},
-    {name = "antimage_counterspell", radius = 1000, disjoint = yes},
-    {name = "abyssal_underlord_pit_of_malice", disable = yes},
-    {name = "alchemist_chemical_rage", radius = 550, disjoint = yes}, -- unfinished
-    {name = "alchemist_unstable_concoction", disable = yes},
-    {name = "ancient_apparition_cold_feet", disable = yes},
-    {name = "bane_fiends_grip", disable = yes},
-    {name = "batrider_flaming_lasso", disable = yes},
+    {name = "antimage_counterspell", radius = 1000, disjoint = "yes"},
+    {name = "abyssal_underlord_pit_of_malice", disable = "yes"},
+    {name = "alchemist_chemical_rage", radius = 550, disjoint = "yes"}, -- unfinished
+    {name = "alchemist_unstable_concoction", disable = "yes"},
+    {name = "ancient_apparition_cold_feet", disable = "yes"},
+    {name = "bane_fiends_grip", disable = "yes"},
+    {name = "batrider_flaming_lasso", disable = "yes"},
     {name = "beastmaster_call_of_the_wild_boar", radius = 2500},
     -- {name = "beastmaster_call_of_the_wild", radius = 2500},  -- unfinished
-    {name = "centaur_hoof_stomp", disable = yes, radius = 315},
-    {name = "chaos_knight_chaos_bolt", disable = yes},
-    {name = "clinkz_strafe", radius = 550, disjoint = yes},
+    {name = "centaur_hoof_stomp", disable = "yes", radius = 315},
+    {name = "chaos_knight_chaos_bolt", disable = "yes"},
+    {name = "clinkz_strafe", radius = 550, disjoint = "yes"},
     {name = "crystal_maiden_freezing_field", radius = 835},
     {name = "death_prophet_exorcism", radius = 1000},
-    {name = "dragon_knight_dragon_tail", disable = yes},
+    {name = "dragon_knight_dragon_tail", disable = "yes"},
     {name = "dragon_knight_elder_dragon_form", radius = 550},
     {name = "drow_ranger_trueshot", radius = 99999},
-    {name = "dark_willow_shadow_realm", radius = 600, disjoint = yes},
+    {name = "dark_willow_shadow_realm", radius = 600, disjoint = "yes"},
     {name = "earthshaker_enchant_totem", radius = 300},
     {name = "earthshaker_echo_slam", radius = 600},
-    {name = "earthshaker_fissure", disable = yes},
-    {name = "enigma_malefice", disable = yes},
-    {name = "enigma_black_hole", disable = yes, radius = 420},
+    {name = "earthshaker_fissure", disable = "yes"},
+    {name = "enigma_malefice", disable = "yes"},
+    {name = "enigma_black_hole", disable = "yes", radius = 420},
     --{name = "faceless_void_time_dilation", radius = 675}, -- unfinished
     {name = "faceless_void_chronosphere", radius = 425},
     {name = "invoker_sun_strike", radius = 99999},
-    {name = "juggernaut_blade_fury", radius = 550, disjoint = yes}, -- unfinished
-    {name = "magnataur_reverse_polarity", disable = yes, radius = 410},
-    {name = "invoker_cold_snap", disable = yes},
-    {name = "jakiro_ice_path", disable = yes},
-    {name = "keeper_of_the_light_will_o_wisp", disable = yes},
-    {name = "leshrac_split_earth", disable = yes},
+    {name = "juggernaut_blade_fury", radius = 550, disjoint = "yes"}, -- unfinished
+    {name = "magnataur_reverse_polarity", disable = "yes", radius = 410},
+    {name = "invoker_cold_snap", disable = "yes"},
+    {name = "jakiro_ice_path", disable = "yes"},
+    {name = "keeper_of_the_light_will_o_wisp", disable = "yes"},
+    {name = "leshrac_split_earth", disable = "yes"},
     {name = "leshrac_diabolic_edict", radius = 500},
     --{name = "leshrac_pulse_nova", radius = 500}, -- unfinished
-    {name = "lich_sinister_gaze", disable = yes},
-    {name = "lina_light_strike_array", disable = yes},
-    {name = "lion_impale", disable = yes},
-    {name = "lion_voodoo", disable = yes},
-    {name = "luna_lucent_beam", disable = yes},
+    {name = "lich_sinister_gaze", disable = "yes"},
+    {name = "lina_light_strike_array", disable = "yes"},
+    {name = "lion_impale", disable = "yes"},
+    {name = "lion_voodoo", disable = "yes"},
+    {name = "luna_lucent_beam", disable = "yes"},
     {name = "luna_eclipse", radius = 675},
-    {name = "magnataur_reverse_polarity", disable = yes},
+    {name = "magnataur_reverse_polarity", disable = "yes"},
     {name = "mirana_starfall", radius = 650},
-    {name = "mirana_arrow", disable = yes},
+    {name = "mirana_arrow", disable = "yes"},
     {name = "mirana_invis", radius = 99999},
     {name = "necrolyte_death_pulse", radius = 475},
     {name = "necrolyte_sadist", radius = 750}, -- unfinished
-    {name = "nyx_assassin_impale", disable = yes},
-    {name = "ogre_magi_fireblast", disable = yes},
-    {name = "ogre_magi_unrefined_fireblast", disable = yes},
-    --{name = "phantom_assassin_blur", radius = 1000, disjoint = yes}, -- unfinished
+    {name = "nyx_assassin_impale", disable = "yes"},
+    {name = "ogre_magi_fireblast", disable = "yes"},
+    {name = "ogre_magi_unrefined_fireblast", disable = "yes"},
+    --{name = "phantom_assassin_blur", radius = 1000, disjoint = "yes"}, -- unfinished
     {name = "puck_waning_rift", radius = 400},
-    {name = "puck_phase_shift", disjoint = yes}, -- unfinished
+    {name = "puck_phase_shift", disjoint = "yes"}, -- unfinished
     {name = "queenofpain_scream_of_pain", radius = 475},
     {name = "rattletrap_power_cogs", radius = 99999},
     {name = "razor_plasma_field", radius = 700},
     {name = "razor_eye_of_the_storm", radius = 550},
-    {name = "sandking_burrowstrike", disable = yes},
+    {name = "sandking_burrowstrike", disable = "yes"},
     {name = "sandking_sand_storm", radius = 650},
-    {name = "sandking_epicenter", radius = 550, blink = yes}, -- unfinished
+    {name = "sandking_epicenter", radius = 550, blink = "yes"}, -- unfinished
     {name = "slark_dark_pact", radius = 325},
     {name = "slark_pounce", radius = 700},
     {name = "sniper_take_aim", radius = 99999},
-    {name = "shadow_shaman_ether_shock", disable = yes},
-    {name = "shadow_shaman_voodoo", disable = yes},
-    {name = "skeleton_king_hellfire_blast", disable = yes},
-    {name = "slardar_slithereen_crush", disable = yes},
+    {name = "shadow_shaman_ether_shock", disable = "yes"},
+    {name = "shadow_shaman_voodoo", disable = "yes"},
+    {name = "skeleton_king_hellfire_blast", disable = "yes"},
+    {name = "slardar_slithereen_crush", disable = "yes"},
     {name = "slardar_sprint", radius = 1000}, -- unfinished?
     {name = "storm_spirit_static_remnant", radius = 275},
-    {name = "sven_storm_bolt", disable = yes},
+    {name = "sven_storm_bolt", disable = "yes"},
     {name = "sven_warcry", radius = 550}, -- unfinished
     {name = "sven_gods_strength", radius = 550},
     {name = "templar_assassin_refraction", radius = 550}, -- unfinished?
     {name = "templar_assassin_meld", radius = 550},
     {name = "terrorblade_reflection", radius = 900},
     {name = "tidehunter_anchor_smash", radius = 375},
-    {name = "tidehunter_ravage", radius = 1250, disable = yes, blink = yes},
+    {name = "tidehunter_ravage", radius = 1250, disable = "yes", blink = "yes"},
     {name = "tinker_heat_seeking_missile", radius = 2500},
     --{name = "tinker_rearm", radius = 2500},
-    {name = "tiny_avalanche", disable = yes},
-    {name = "tusk_snowball", disable = yes},
+    {name = "tiny_avalanche", disable = "yes"},
+    {name = "tusk_snowball", disable = "yes"},
     {name = "venomancer_poison_nova", radius = 830},
-    {name = "vengefulspirit_magic_missile", disable = yes},
-    {name = "windrunner_shackleshot", disable = yes},
+    {name = "vengefulspirit_magic_missile", disable = "yes"},
+    {name = "windrunner_shackleshot", disable = "yes"},
     {name = "windrunner_windrun", radius = 1000}, -- unfinished?
-    {name = "witch_doctor_paralyzing_cask", disable = yes},
-    --{name = "witch_doctor_voodoo_restoration", radius = 550, heal = yes}, -- unfinished
+    {name = "witch_doctor_paralyzing_cask", disable = "yes"},
+    --{name = "witch_doctor_voodoo_restoration", radius = 550, heal = "yes"}, -- unfinished
     {name = "zuus_thundergods_wrath", radius = 99999}
 }
 
@@ -139,7 +139,7 @@ function rubick.OnUpdate()
         for _, logicalspell in pairs(rubick.logical) do
             if logicalspell then
                 if Ability.GetName(spell) == logicalspell.name then
-                    if logicalspell.disable == yes then
+                    if logicalspell.disable == "yes" then
                         isdiable = true
                     else
                         isdiable = false
@@ -147,7 +147,7 @@ function rubick.OnUpdate()
                     if logicalrange == 0 then
                         logicalrange = logicalspell.radius - 75
                     end
-                    if logicalspell.disjoint == yes then
+                    if logicalspell.disjoint == "yes" then
                         --Log.Write("isDisjoint")
                     end
                 end
@@ -164,6 +164,9 @@ function rubick.OnUpdate()
         end
         if enemy and Menu.IsKeyDown(rubick.spellkey) then
             if Entity.GetAbsOrigin(self):Distance(Entity.GetAbsOrigin(enemy)):Length2D() < logicalrange and Ability.IsReady(spell) then
+                if isdiable then
+                    Log.Write("yes")
+                end
                 if not isdiable or isdiable and not NPC.IsStunned(enemy) and not NPC.HasState(enemy, Enum.ModifierState.MODIFIER_STATE_HEXED) then
                     if (Ability.GetBehavior(spell) & Enum.AbilityBehavior.DOTA_ABILITY_BEHAVIOR_NO_TARGET) ~= 0 then
                         if Ability.GetName(spell) == "earthshaker_enchant_totem" and NPC.GetItem(self, "item_ultimate_scepter") then

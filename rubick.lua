@@ -127,7 +127,7 @@ function rubick.OnUpdate()
             logicalrange = logicalrange + 100
         end
         if enemy and Menu.IsKeyDown(rubick.spellkey) then
-            if Entity.GetAbsOrigin(self):Distance(Entity.GetAbsOrigin(enemy)):Length2D() < logicalrange then
+            if Entity.GetAbsOrigin(self):Distance(Entity.GetAbsOrigin(enemy)):Length2D() < logicalrange and Ability.IsReady(spell) then
                 if not isdiable or isdiable and not NPC.IsStunned(enemy) and not NPC.HasState(enemy, Enum.ModifierState.MODIFIER_STATE_HEXED) then
                     if (Ability.GetBehavior(spell) & Enum.AbilityBehavior.DOTA_ABILITY_BEHAVIOR_NO_TARGET) ~= 0 then
                         if Ability.GetName(spell) == "earthshaker_enchant_totem" and NPC.GetItem(self, "item_ultimate_scepter") then
@@ -213,11 +213,6 @@ function rubick.OnUpdate()
             if not spell or spell and not ischannelling then
                 if not NPC.IsStunned(enemy) and not NPC.HasState(enemy, Enum.ModifierState.MODIFIER_STATE_HEXED) then
                     if telekinesis and Ability.IsReady(telekinesis) then
-                        if isdiable then
-                            Log.Write("yes")
-                        else
-                            Log.Write("no")
-                        end
                         if not spell
                         or not isdiable
                         or spell and isdiable and Ability.GetCooldownLength(spell) - Ability.GetCooldownTimeLeft(spell) > 1

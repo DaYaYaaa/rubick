@@ -7,29 +7,54 @@ rubick.logical = {
     {name = "ancient_apparition_ice_blast_release", radius = 99999},
     {name = "antimage_counterspell", radius = 1000, disjoint = "yes"},
     {name = "abyssal_underlord_pit_of_malice", disable = "yes"},
+    {name = "alchemist_unstable_concoction", disable = "yes"}, -- unfinished
+    {name = "alchemist_unstable_concoction_throw", disable = "yes"}, -- unfinished
     {name = "alchemist_chemical_rage", radius = 550, disjoint = "yes"}, -- unfinished
     {name = "alchemist_unstable_concoction", disable = "yes"},
     {name = "ancient_apparition_cold_feet", disable = "yes"},
     {name = "bane_fiends_grip", disable = "yes"},
+    {name = "batrider_firefly", radius = 550},
     {name = "batrider_flaming_lasso", disable = "yes"},
-    {name = "beastmaster_call_of_the_wild_boar", radius = 2500},
-    -- {name = "beastmaster_call_of_the_wild", radius = 2500},  -- unfinished
+    {name = "beastmaster_call_of_the_wild_boar", radius = 1200},
+    --{name = "beastmaster_call_of_the_wild", radius = 2500},  -- unfinished
+    {name = "beastmaster_primal_roar", disable = "yes"},
+    {name = "brewmaster_thunder_clap", radius = 400},
+    {name = "brewmaster_drunken_brawler", radius = 550},
+    {name = "brewmaster_primal_split", radius = 550},
+    {name = "bristleback_quill_spray", radius = 650},
+    {name = "bounty_hunter_wind_walk", radius = 1200},  -- unfinished
+    {name = "broodmother_insatiable_hunger", radius = 550},
     {name = "centaur_hoof_stomp", disable = "yes", radius = 315},
+    {name = "centaur_stampede", radius = 99999},
     {name = "chaos_knight_chaos_bolt", disable = "yes"},
+    {name = "chaos_knight_phantasm", radius = 550},
+    {name = "chen_hand_of_god", radius = 99999, heal = "yes"},
     {name = "clinkz_strafe", radius = 550, disjoint = "yes"},
+    {name = "clinkz_wind_walk", radius = 2000}, -- unfinished
     {name = "crystal_maiden_freezing_field", radius = 835},
+    {name = "dark_willow_shadow_realm", radius = 600, disjoint = "yes"},
+    {name = "dark_willow_bedlam", radius = 300},
     {name = "death_prophet_exorcism", radius = 1000},
+    {name = "doom_bringer_scorched_earth", radius = 600},
     {name = "dragon_knight_dragon_tail", disable = "yes"},
     {name = "dragon_knight_elder_dragon_form", radius = 550},
     {name = "drow_ranger_trueshot", radius = 99999},
-    {name = "dark_willow_shadow_realm", radius = 600, disjoint = "yes"},
+    {name = "ember_spirit_searing_chains", radius = 400},
+    {name = "ember_spirit_flame_guard", radius = 400},
+    {name = "earthshaker_fissure", disable = "yes"},
     {name = "earthshaker_enchant_totem", radius = 300},
     {name = "earthshaker_echo_slam", radius = 600},
-    {name = "earthshaker_fissure", disable = "yes"},
+    {name = "enchantress_natures_attendants", radius = 900, heal = "yes"},
     {name = "enigma_malefice", disable = "yes"},
     {name = "enigma_black_hole", disable = "yes", radius = 420},
     --{name = "faceless_void_time_dilation", radius = 675}, -- unfinished
     {name = "faceless_void_chronosphere", radius = 425},
+    {name = "gyrocopter_rocket_barrage", radius = 400},
+    {name = "gyrocopter_flak_cannon", radius = 1250},
+    {name = "huskar_inner_fire", radius = 500},
+    {name = "invoker_forge_spirit", radius = 1200},
+    --{name = "invoker_ghost_walk", radius = 3000}, -- unfinished
+    {name = "invoker_ice_wall", radius = 700}, -- unfinished?
     {name = "invoker_sun_strike", radius = 99999},
     {name = "juggernaut_blade_fury", radius = 550, disjoint = "yes"}, -- unfinished
     {name = "magnataur_reverse_polarity", disable = "yes", radius = 410},
@@ -40,21 +65,44 @@ rubick.logical = {
     {name = "leshrac_diabolic_edict", radius = 500},
     --{name = "leshrac_pulse_nova", radius = 500}, -- unfinished
     {name = "lich_sinister_gaze", disable = "yes"},
+    {name = "life_stealer_rage", radius = 550, disjoint = "yes"}, -- unfinished
     {name = "lina_light_strike_array", disable = "yes"},
     {name = "lion_impale", disable = "yes"},
     {name = "lion_voodoo", disable = "yes"},
+    {name = "lone_druid_spirit_bear", radius = 99999},
+    {name = "lone_druid_spirit_link", radius = 550},
+    {name = "lone_druid_savage_roar", radius = 325},
+    {name = "lone_druid_true_form_battle_cry", radius = 550},
     {name = "luna_lucent_beam", disable = "yes"},
     {name = "luna_eclipse", radius = 675},
+    {name = "lycan_summon_wolves", radius = 1000},
+    {name = "lycan_howl", radius = 3000},
+    {name = "lycan_shapeshift", radius = 550},
     {name = "magnataur_reverse_polarity", disable = "yes"},
+    {name = "medusa_stone_gaze", radius = 1000},
     {name = "mirana_starfall", radius = 650},
     {name = "mirana_arrow", disable = "yes"},
     {name = "mirana_invis", radius = 99999},
+    {name = "monkey_king_boundless_strike", disable = "yes"},
+    {name = "monkey_king_mischief", radius = 550, disjoint = "yes"},
+    {name = "naga_siren_mirror_image", radius = 550},
+    --{name = "naga_siren_song_of_the_siren", radius = 1400}, -- unfinished
     {name = "necrolyte_death_pulse", radius = 475},
     {name = "necrolyte_sadist", radius = 750}, -- unfinished
+    {name = "night_stalker_crippling_fear", radius = 375},
     {name = "nyx_assassin_impale", disable = "yes"},
+    {name = "nyx_assassin_spiked_carapace", radius = 550}, -- unfinished
+    {name = "nyx_assassin_vendetta", radius = 99999},
+    {name = "obsidian_destroyer_equilibrium", radius = 550},
     {name = "ogre_magi_fireblast", disable = "yes"},
     {name = "ogre_magi_unrefined_fireblast", disable = "yes"},
+    {name = "omniknight_guardian_angel", radius = 1200},
+    {name = "pangolier_shield_crash", radius = 500},
+    {name = "pangolier_gyroshell", radius = 550},
+    --{name = "pangolier_gyroshell_stop", radius = 550},
     --{name = "phantom_assassin_blur", radius = 1000, disjoint = "yes"}, -- unfinished
+    {name = "phoenix_icarus_dive", radius = 1400},
+    --{name = "phoenix_supernova", radius = 1300}, -- unfinished
     {name = "puck_waning_rift", radius = 400},
     {name = "puck_phase_shift", disjoint = "yes"}, -- unfinished
     {name = "queenofpain_scream_of_pain", radius = 475},
@@ -64,14 +112,21 @@ rubick.logical = {
     {name = "sandking_burrowstrike", disable = "yes"},
     {name = "sandking_sand_storm", radius = 650},
     {name = "sandking_epicenter", radius = 550, blink = "yes"}, -- unfinished
-    {name = "slark_dark_pact", radius = 325},
-    {name = "slark_pounce", radius = 700},
-    {name = "sniper_take_aim", radius = 99999},
     {name = "shadow_shaman_ether_shock", disable = "yes"},
     {name = "shadow_shaman_voodoo", disable = "yes"},
+    {name = "shredder_whirling_death", radius = 300},
+    --{name = "shredder_return_chakram", special = "yes"}, -- unfinished
+    --{name = "shredder_return_chakram_2", special = "yes"}, -- unfinished
+    {name = "silencer_global_silence", radius = 99999}, -- unfinished
     {name = "skeleton_king_hellfire_blast", disable = "yes"},
     {name = "slardar_slithereen_crush", disable = "yes"},
     {name = "slardar_sprint", radius = 1000}, -- unfinished?
+    {name = "slark_dark_pact", radius = 325},
+    {name = "slark_pounce", radius = 700},
+    {name = "slark_shadow_dance", radius = 550},
+    {name = "sniper_take_aim", radius = 99999},
+    --{name = "spectre_haunt", radius = 99999}, -- unfinished
+    {name = "spirit_breaker_bulldoze", radius = 1500},
     {name = "storm_spirit_static_remnant", radius = 275},
     {name = "sven_storm_bolt", disable = "yes"},
     {name = "sven_warcry", radius = 550}, -- unfinished
@@ -79,16 +134,30 @@ rubick.logical = {
     {name = "templar_assassin_refraction", radius = 550}, -- unfinished?
     {name = "templar_assassin_meld", radius = 550},
     {name = "terrorblade_reflection", radius = 900},
+    {name = "terrorblade_conjure_image", radius = 550},
+    {name = "terrorblade_metamorphosis", radius = 550},
     {name = "tidehunter_anchor_smash", radius = 375},
     {name = "tidehunter_ravage", radius = 1250, disable = "yes", blink = "yes"},
     {name = "tinker_heat_seeking_missile", radius = 2500},
     --{name = "tinker_rearm", radius = 2500},
     {name = "tiny_avalanche", disable = "yes"},
+    {name = "treant_overgrowth", radius = 800},
+    {name = "troll_warlord_whirling_axes_melee", radius = 450},
+    --{name = "troll_warlord_battle_trance", radius = 550}, -- unfinished
     {name = "tusk_snowball", disable = "yes"},
+    {name = "tusk_tag_team", radius = 350},
+    {name = "undying_flesh_golem", radius = 550},
+    {name = "ursa_earthshock", radius = 385},
+    {name = "ursa_overpower", radius = 550},
+    {name = "ursa_enrage", radius = 550},
     {name = "venomancer_poison_nova", radius = 830},
     {name = "vengefulspirit_magic_missile", disable = "yes"},
+    {name = "visage_summon_familiars", radius = 99999},
+    {name = "weaver_shukuchi", radius = 1200}, -- unfinished
+    --{name = "weaver_time_lapse", radius = 1200, heal = "yes"}, -- unfinished
     {name = "windrunner_shackleshot", disable = "yes"},
     {name = "windrunner_windrun", radius = 1000}, -- unfinished?
+    {name = "wisp_spirits", radius = 700},
     {name = "witch_doctor_paralyzing_cask", disable = "yes"},
     --{name = "witch_doctor_voodoo_restoration", radius = 550, heal = "yes"}, -- unfinished
     {name = "zuus_thundergods_wrath", radius = 99999}
@@ -169,6 +238,8 @@ function rubick.OnUpdate()
                         if Ability.GetName(spell) == "earthshaker_enchant_totem" and NPC.GetItem(self, "item_ultimate_scepter") then
                             Ability.CastPosition(spell, Entity.GetAbsOrigin(enemy))
                         elseif Ability.GetName(spell) == "riki_tricks_of_the_trade" and NPC.GetItem(self, "item_ultimate_scepter") then
+                            Ability.CastTarget(spell, self)
+                        elseif Ability.GetName(spell) == "chaos_knight_phantasm" and NPC.GetItem(self, "item_ultimate_scepter") then
                             Ability.CastTarget(spell, self)
                         elseif Ability.GetName(spell) == "nevermore_shadowraze1" 
                         or Ability.GetName(spell) == "nevermore_shadowraze2" and Entity.GetAbsOrigin(self):Distance(Entity.GetAbsOrigin(enemy)):Length2D() > 325

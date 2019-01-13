@@ -5,11 +5,11 @@ rubick.swapkey = Menu.AddKeyOption({".SCRIPTS", "Rubick"}, "Rubick Swap Key", En
 rubick.library = {
     {name = "ancient_apparition_ice_blast", radius = 99999},
     {name = "ancient_apparition_ice_blast_release", radius = 99999},
-    {name = "antimage_counterspell", radius = 1000, type = "disjoint"},
+    --{name = "antimage_counterspell", radius = 1000, type = "evade"},
     {name = "abyssal_underlord_pit_of_malice", type = "disable"},
     {name = "alchemist_unstable_concoction", type = "disable"}, -- unfinished
     {name = "alchemist_unstable_concoction_throw", type = "disable"}, -- unfinished
-    {name = "alchemist_chemical_rage", radius = 550, type = "disjoint"}, -- unfinished
+    {name = "alchemist_chemical_rage", radius = 550, type = "evade"}, -- unfinished
     {name = "alchemist_unstable_concoction", type = "disable"},
     {name = "ancient_apparition_cold_feet", type = "disable"},
     {name = "axe_berserkers_call", radius = 300},
@@ -30,10 +30,10 @@ rubick.library = {
     {name = "chaos_knight_chaos_bolt", type = "disable"},
     {name = "chaos_knight_phantasm", radius = 550},
     {name = "chen_hand_of_god", radius = 99999, heal = "yes"},
-    {name = "clinkz_strafe", radius = 550, type = "disjoint"},
+    {name = "clinkz_strafe", radius = 550, type = "evade"},
     {name = "clinkz_wind_walk", radius = 2000}, -- unfinished
     {name = "crystal_maiden_freezing_field", radius = 835},
-    {name = "dark_willow_shadow_realm", radius = 600, type = "disjoint"},
+    {name = "dark_willow_shadow_realm", radius = 600, type = "evade"},
     {name = "dark_willow_bedlam", radius = 300},
     {name = "death_prophet_exorcism", radius = 1000},
     {name = "doom_bringer_scorched_earth", radius = 600},
@@ -45,9 +45,9 @@ rubick.library = {
     {name = "earthshaker_fissure", type = "disable"},
     {name = "earthshaker_enchant_totem", radius = 300},
     {name = "earthshaker_echo_slam", radius = 600},
-    {name = "enchantress_natures_attendants", radius = 900, heal = "yes"},
+    {name = "enchantress_natures_attendants", radius = 900, type = "heal"},
     {name = "enigma_malefice", type = "disable"},
-    {name = "enigma_black_hole", type = "disable", radius = 420, blink = true},
+    {name = "enigma_black_hole", radius = 420, type = "disable", blink = true},
     --{name = "faceless_void_time_dilation", radius = 675}, -- unfinished
     {name = "faceless_void_chronosphere", radius = 425},
     {name = "gyrocopter_rocket_barrage", radius = 400},
@@ -57,7 +57,7 @@ rubick.library = {
     --{name = "invoker_ghost_walk", radius = 3000}, -- unfinished
     {name = "invoker_ice_wall", radius = 700}, -- unfinished?
     {name = "invoker_sun_strike", radius = 99999},
-    {name = "juggernaut_blade_fury", radius = 550, type = "disjoint"}, -- unfinished
+    {name = "juggernaut_blade_fury", radius = 550, type = "evade"}, -- unfinished
     {name = "magnataur_reverse_polarity", type = "disable", radius = 410},
     {name = "invoker_cold_snap", type = "disable"},
     {name = "jakiro_ice_path", type = "disable"},
@@ -66,7 +66,7 @@ rubick.library = {
     {name = "leshrac_diabolic_edict", radius = 500},
     --{name = "leshrac_pulse_nova", radius = 500}, -- unfinished
     {name = "lich_sinister_gaze", type = "disable"},
-    {name = "life_stealer_rage", radius = 550, type = "disjoint"}, -- unfinished
+    {name = "life_stealer_rage", radius = 550, type = "evade"}, -- unfinished
     {name = "lina_light_strike_array", type = "disable"},
     {name = "lion_impale", type = "disable"},
     {name = "lion_voodoo", type = "disable"},
@@ -85,7 +85,7 @@ rubick.library = {
     {name = "mirana_arrow", type = "disable"},
     {name = "mirana_invis", radius = 99999},
     {name = "monkey_king_boundless_strike", type = "disable"},
-    {name = "monkey_king_mischief", radius = 550, type = "disjoint"},
+    {name = "monkey_king_mischief", radius = 550, type = "evade"},
     {name = "naga_siren_mirror_image", radius = 550},
     --{name = "naga_siren_song_of_the_siren", radius = 1400}, -- unfinished
     {name = "necrolyte_death_pulse", radius = 475},
@@ -101,11 +101,11 @@ rubick.library = {
     {name = "pangolier_shield_crash", radius = 500},
     {name = "pangolier_gyroshell", radius = 550},
     --{name = "pangolier_gyroshell_stop", radius = 550},
-    --{name = "phantom_assassin_blur", radius = 1000, type = "disjoint"}, -- unfinished
+    --{name = "phantom_assassin_blur", radius = 1000, type = "evade"}, -- unfinished
     {name = "phoenix_icarus_dive", radius = 1400},
     --{name = "phoenix_supernova", radius = 1300}, -- unfinished
     {name = "puck_waning_rift", radius = 400},
-    {name = "puck_phase_shift", type = "disjoint"}, -- unfinished
+    {name = "puck_phase_shift", type = "evade"}, -- unfinished
     {name = "queenofpain_scream_of_pain", radius = 475},
     {name = "rattletrap_power_cogs", radius = 99999},
     {name = "razor_plasma_field", radius = 700},
@@ -120,7 +120,7 @@ rubick.library = {
     --{name = "shredder_return_chakram_2", special = "yes"}, -- unfinished
     {name = "silencer_global_silence", radius = 99999}, -- unfinished
     {name = "skeleton_king_hellfire_blast", type = "disable"},
-    {name = "slardar_slithereen_crush", type = "disable"},
+    {name = "slardar_slithereen_crush", radius = 350, type = "disable"},
     {name = "slardar_sprint", radius = 1000}, -- unfinished?
     {name = "slark_dark_pact", radius = 325},
     {name = "slark_pounce", radius = 700},
@@ -155,12 +155,12 @@ rubick.library = {
     {name = "vengefulspirit_magic_missile", type = "disable"},
     {name = "visage_summon_familiars", radius = 99999},
     {name = "weaver_shukuchi", radius = 1200}, -- unfinished
-    --{name = "weaver_time_lapse", radius = 1200, heal = "yes"}, -- unfinished
+    --{name = "weaver_time_lapse", radius = 1200, type = "heal"}, -- unfinished
     {name = "windrunner_shackleshot", type = "disable"},
     {name = "windrunner_windrun", radius = 1000}, -- unfinished?
     {name = "wisp_spirits", radius = 700},
     {name = "witch_doctor_paralyzing_cask", type = "disable"},
-    --{name = "witch_doctor_voodoo_restoration", radius = 550, heal = "yes"}, -- unfinished
+    --{name = "witch_doctor_voodoo_restoration", radius = 550, type = "heal"}, -- unfinished
     {name = "zuus_thundergods_wrath", radius = 99999}
 }
 
@@ -207,8 +207,8 @@ function rubick.OnUpdate()
         for _, library in pairs(rubick.library) do
             if library then
                 if Ability.GetName(spell) == library.name then
+                    if library.type == "evade" then end
                     if library.type == "disable" then isdiable = true else isdiable = false end
-                    if library.type == "disjoint" then end
                     if distance == 0 or distance == 125 then distance = library.radius - 75 end
                 end
             end
@@ -224,9 +224,9 @@ function rubick.OnUpdate()
                         elseif Ability.GetName(spell) == "riki_tricks_of_the_trade" and NPC.GetItem(self, "item_ultimate_scepter") then Ability.CastTarget(spell, self)
                         elseif Ability.GetName(spell) == "chaos_knight_phantasm" and NPC.GetItem(self, "item_ultimate_scepter") then Ability.CastTarget(spell, self)
                         elseif Ability.GetName(spell) == "luna_eclipse" and NPC.GetItem(self, "item_ultimate_scepter") then Ability.CastPosition(spell, Entity.GetAbsOrigin(enemy))
-                        elseif Ability.GetName(spell) == "nevermore_shadowraze1" or Ability.GetName(spell) == "nevermore_shadowraze2" or Ability.GetName(spell) == "nevermore_shadowraze3" then
-                            if Ability.GetName(spell) == "nevermore_shadowraze1" 
-                            or Ability.GetName(spell) == "nevermore_shadowraze2" and Entity.GetAbsOrigin(self):Distance(Entity.GetAbsOrigin(enemy)):Length2D() > 325
+                        elseif Ability.GetName(spell) == "nevermore_shadowraze1" or Ability.GetName(spell) == "nevermore_shadowraze2" or Ability.GetName(spell) == "nevermore_shadowraze3" or Ability.GetName(spell) == "slark_pounce" then
+                            if Ability.GetName(spell) == "nevermore_shadowraze1" or Ability.GetName(spell) == "slark_pounce"
+                            or Ability.GetName(spell) == "nevermore_shadowraze2" and Entity.GetAbsOrigin(self):Distance(Entity.GetAbsOrigin(enemy)):Length2D() > 325 
                             or Ability.GetName(spell) == "nevermore_shadowraze3" and Entity.GetAbsOrigin(self):Distance(Entity.GetAbsOrigin(enemy)):Length2D() > 575 then
                                 if NPC.FindFacingNPC(self, nil, Enum.TeamType.TEAM_ENEMY, distance, 5) == enemy  then
                                     Ability.CastNoTarget(spell)
@@ -292,8 +292,7 @@ function rubick.OnUpdate()
                                     Ability.CastPosition(spell, Entity.GetAbsOrigin(enemy))
                                 end
                             end
-                            if not isflying and Ability.GetName(spell) == "ancient_apparition_ice_blast" and Ability.IsInAbilityPhase(spell) then
-                                isflying = true
+                            if Ability.GetName(spell) == "ancient_apparition_ice_blast" and Ability.IsInAbilityPhase(spell) then
                                 timer = GameRules.GetGameTime()
                                 traveltime = Entity.GetAbsOrigin(self):Distance(Entity.GetAbsOrigin(enemy)):Length2D() / 1500
                             end
